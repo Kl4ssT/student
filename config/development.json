@@ -1,0 +1,8 @@
+{
+  "sequelize": {
+    "database": "studentportal",
+    "username": "root",
+    "password": "p57e4342",
+    "dialect": "mysql"
+  }
+}
