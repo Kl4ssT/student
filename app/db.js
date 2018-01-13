@@ -20,7 +20,6 @@ fs
 Object.keys(models).forEach((model) => {
     if ('associate' in models[model]) {
         models[model].associate(models);
-        console.log('asdf');
     }
 });
 

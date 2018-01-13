@@ -16,7 +16,14 @@ const DB = {
     dialect: process.env.DIALECT || config.get('sequelize.dialect'),
 };
 
+const YOUTUBE = {
+    apikey: process.env.YOUTUBE_API || config.get('youtube.apikey'),
+    client_id: process.env.YOUTUBE_CLIENT_ID || config.get('youtube.client_id'),
+    secret: process.env.YOUTUBE_SECRET_KEY || config.get('youtube.secret')
+};
+
 export {
     PORT,
-    DB
+    DB,
+    YOUTUBE
 };

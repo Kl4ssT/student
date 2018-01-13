@@ -19,17 +19,15 @@ export default (sequelize, DataTypes) => {
             type: DataTypes.STRING
         }
     }, {
-        timestamps: false,
-        classMethods: {
-            associate: (models) => {
-                Categories.hasMany(models.Teachers, {
-                    through: 'Teachers',
-                    foreignKey: 'teacherIndex',
-                    onDelete: 'cascade'
-                })
-            }
-        }
+        timestamps: false
     });
+
+    Categories.associate = (models) => {
+        Categories.hasMany(models.Teachers, {
+            as: 'Teachers',
+            foreignKey: 'id'
+        });
+    };
 
     return Categories
 };

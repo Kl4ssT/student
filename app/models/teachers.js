@@ -19,17 +19,15 @@ export default (sequelize, DataTypes) => {
             type: DataTypes.TEXT
         }
     }, {
-        timestamps: false,
-        classMethods: {
-            associate: (models) => {
-                Teachers.belongsTo(models.Categories, {
-                    through: 'Category',
-                    foreignKey: 'categoryIndex',
-                    onDelete: 'cascade'
-                })
-            }
-        }
+        timestamps: false
     });
+
+    Teachers.associate = (models) => {
+        Teachers.belongsTo(models.Categories, {
+            as: 'Category',
+            foreignKey: 'id_category'
+        });
+    };
 
     return Teachers;
 };
