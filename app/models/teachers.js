@@ -17,6 +17,10 @@ export default (sequelize, DataTypes) => {
         },
         description: {
             type: DataTypes.TEXT
+        },
+        youtube_user: {
+            type: DataTypes.STRING,
+            unique: true
         }
     }, {
         timestamps: false

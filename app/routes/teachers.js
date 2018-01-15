@@ -1,7 +1,6 @@
 import Router from 'koa-router';
 import models from '../db';
-import youtube from "../youtube";
-import { YOUTUBE_KEY } from "../config";
+import Youtube from "../youtube";
 
 const Teachers = new Router();
 Teachers.prefix('/teachers');
@@ -24,25 +23,47 @@ Teachers.get('/', async (ctx) => {
     }
 });
 
-Teachers.get('/test', async (ctx) => {
+Teachers.get('/:id', async (ctx) => {
     try
     {
-        console.log(YOUTUBE_KEY);
-        youtube.channels.list({
-            auth: YOUTUBE_KEY,
-            part: "auditDetails",
-            forUsername: "UCIRd-yly3bh-RxHsfXm9-WQ"
-        }, (err, response) => {
-            if (err) console.log(err);
-            console.log(response);
-        });
+        const teacher = await models.Teachers.findById(ctx.params.id);
 
-        ctx.body =  null;
+        ctx.body = teacher;
     }
     catch (err)
     {
         console.log(err);
     }
 });
+
+Teachers.get('/videos/:id', async (ctx) => {
+    try
+    {
+        const teacher = await models.Teachers.findById(ctx.params.id);
+
+        Youtube.channels.list({
+            part: 'contentDetails',
+            forUsername: teacher.youtube_user,
+        }, (err, res) => {
+
+           Youtube.playlistItems.list({
+               part: 'snippet',
+               playlistId: res.items[0].contentDetails.relatedPlaylists.uploads
+           }, (err, res) => {
+
+               Youtube.videos.list()
+               console.log(res.items[0].snippet.resourceId.videoId);
+
+           });
+
+        });
+    }
+    catch (err)
+    {
+        console.log(err);
+    }
+});
+
+
 
 export default Teachers;

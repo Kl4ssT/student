@@ -1,4 +1,9 @@
-import google from 'googleapis';
-const youtube = google.youtube('v3');
+import Youtube from 'youtube-api';
+import { YOUTUBE } from '../config';
 
-export default youtube;
+Youtube.authenticate({
+    type: 'key',
+    key: YOUTUBE.apikey
+});
+
+export default Youtube;
