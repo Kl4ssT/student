@@ -18,7 +18,11 @@ export default (sequelize, DataTypes) => {
         description: {
             type: DataTypes.TEXT
         },
-        youtube_user: {
+        channel_id: {
+            type: DataTypes.STRING,
+            unique: true
+        },
+        stream_id: {
             type: DataTypes.STRING,
             unique: true
         }

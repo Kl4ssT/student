@@ -20,8 +20,7 @@ Departments.get('/', async (ctx) => {
 Departments.get('/:id', async (ctx) => {
     try
     {
-        const department = await models.Categories.findOne({
-            where: { id: ctx.params.id },
+        const department = await models.Categories.findById(ctx.params.id, {
             include: [{
                 model: models.Teachers,
                 as: 'Teachers'

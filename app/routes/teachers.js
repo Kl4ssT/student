@@ -8,12 +8,7 @@ Teachers.prefix('/teachers');
 Teachers.get('/', async (ctx) => {
     try
     {
-        const teachers = await models.Teachers.findAll({
-            include: [{
-                model: models.Categories,
-                as: 'Category'
-            }]
-        });
+        const teachers = await models.Teachers.findAll();
 
         ctx.body = teachers;
     }
@@ -41,22 +36,44 @@ Teachers.get('/videos/:id', async (ctx) => {
     {
         const teacher = await models.Teachers.findById(ctx.params.id);
 
-        Youtube.channels.list({
-            part: 'contentDetails',
-            forUsername: teacher.youtube_user,
-        }, (err, res) => {
+        const getVideos = new Promise((resolve, reject) => {
 
-           Youtube.playlistItems.list({
-               part: 'snippet',
-               playlistId: res.items[0].contentDetails.relatedPlaylists.uploads
-           }, (err, res) => {
+            Youtube.channels.list({
+                part: 'contentDetails',
+                id: teacher.channel_id,
+            }, (err, res) => {
 
-               Youtube.videos.list()
-               console.log(res.items[0].snippet.resourceId.videoId);
+                if (err) reject(err);
 
-           });
+                Youtube.playlistItems.list({
+                    part: 'snippet,contentDetails',
+                    playlistId: res.items[0].contentDetails.relatedPlaylists.uploads,
+                    maxResults: 10
+                }, (err, res) => {
 
+                    console.log(res);
+
+                    if (err) reject(err);
+
+                    let videos = [];
+
+                    res.items.forEach((item) => {
+
+                        videos.push({
+                            id: item.snippet.resourceId.videoId,
+                            thumbnail: item.snippet.thumbnails.medium.url,
+                            title: item.snippet.title
+                        });
+                    });
+
+                    console.log(videos);
+
+                    resolve(videos);
+                });
+            });
         });
+
+        ctx.body = await getVideos;
     }
     catch (err)
     {
@@ -64,6 +81,9 @@ Teachers.get('/videos/:id', async (ctx) => {
     }
 });
 
+Teachers.get('/video/:id/:videoId', async (ctx) => {
+
+});
 
 
 export default Teachers;
