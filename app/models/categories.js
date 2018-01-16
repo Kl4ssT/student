@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-    const Categories = sequelize.define('Categories', {
+    const Categories = sequelize.define('categories', {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,

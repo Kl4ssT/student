@@ -8,7 +8,7 @@ Streams.prefix('/streams');
 Streams.get('/', async (ctx) => {
     try
     {
-        const teachers = await models.Teachers.findAll();
+        const teachers = await models.teachers.findAll();
 
         const isLive = (streamId) => {
             return new Promise((resolve, reject) => {

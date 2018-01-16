@@ -7,7 +7,7 @@ Departments.prefix('/departments');
 Departments.get('/', async (ctx) => {
     try
     {
-        const departments = await models.Categories.findAll();
+        const departments = await models.categories.findAll();
 
         ctx.body = departments;
     }
@@ -20,7 +20,7 @@ Departments.get('/', async (ctx) => {
 Departments.get('/:id', async (ctx) => {
     try
     {
-        const department = await models.Categories.findById(ctx.params.id, {
+        const department = await models.categories.findById(ctx.params.id, {
             include: [{
                 model: models.Teachers,
                 as: 'Teachers'

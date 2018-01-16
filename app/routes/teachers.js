@@ -8,7 +8,7 @@ Teachers.prefix('/teachers');
 Teachers.get('/', async (ctx) => {
     try
     {
-        const teachers = await models.Teachers.findAll();
+        const teachers = await models.teachers.findAll();
 
         ctx.body = teachers;
     }
@@ -21,7 +21,7 @@ Teachers.get('/', async (ctx) => {
 Teachers.get('/:id', async (ctx) => {
     try
     {
-        const teacher = await models.Teachers.findById(ctx.params.id);
+        const teacher = await models.teachers.findById(ctx.params.id);
 
         ctx.body = teacher;
     }
@@ -34,7 +34,7 @@ Teachers.get('/:id', async (ctx) => {
 Teachers.get('/videos/:id', async (ctx) => {
     try
     {
-        const teacher = await models.Teachers.findById(ctx.params.id);
+        const teacher = await models.teachers.findById(ctx.params.id);
 
         const getVideos = new Promise((resolve, reject) => {
 
