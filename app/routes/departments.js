@@ -22,7 +22,7 @@ Departments.get('/:id', async (ctx) => {
     {
         const department = await models.categories.findById(ctx.params.id, {
             include: [{
-                model: models.Teachers,
+                model: models.teachers,
                 as: 'Teachers'
             }]
         });
