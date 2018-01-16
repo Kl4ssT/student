@@ -23,7 +23,7 @@ export default (sequelize, DataTypes) => {
     });
 
     Categories.associate = (models) => {
-        Categories.hasMany(models.Teachers, {
+        Categories.hasMany(models.teachers, {
             as: 'Teachers',
             foreignKey: 'id'
         });

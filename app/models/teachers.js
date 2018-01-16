@@ -31,7 +31,7 @@ export default (sequelize, DataTypes) => {
     });
 
     Teachers.associate = (models) => {
-        Teachers.belongsTo(models.Categories, {
+        Teachers.belongsTo(models.categories, {
             as: 'Category',
             foreignKey: 'id_category'
         });
