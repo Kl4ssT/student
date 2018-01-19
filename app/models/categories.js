@@ -29,5 +29,5 @@ export default (sequelize, DataTypes) => {
         });
     };
 
-    return Categories
+    return Categories;
 };
