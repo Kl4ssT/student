@@ -31,6 +31,23 @@ Teachers.get('/:id', async (ctx) => {
     }
 });
 
+Teachers.get('/department/:id', async (ctx) => {
+    try
+    {
+        const teachers = await models.teachers.findAll({
+            where: {
+                id_category: ctx.params.id
+            }
+        });
+
+        ctx.body = teachers;
+    }
+    catch (err)
+    {
+        console.log(err);
+    }
+});
+
 Teachers.get('/videos/:id', async (ctx) => {
     try
     {
@@ -79,10 +96,6 @@ Teachers.get('/videos/:id', async (ctx) => {
     {
         console.log(err);
     }
-});
-
-Teachers.get('/video/:id/:videoId', async (ctx) => {
-
 });
 
 
