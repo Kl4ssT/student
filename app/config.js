@@ -22,8 +22,11 @@ const YOUTUBE = {
     secret: process.env.YOUTUBE_SECRET_KEY || config.get('youtube.secret')
 };
 
+const JWT_SECRET = config.get('jwt.secret');
+
 export {
     PORT,
     DB,
-    YOUTUBE
+    YOUTUBE,
+    JWT_SECRET
 };

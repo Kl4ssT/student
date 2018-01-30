@@ -1,0 +1,292 @@
+.menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: auto; }
+  .menu__list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    list-style: none; }
+  .menu__item {
+    margin: 0 20px; }
+  .menu__link {
+    font-weight: 300;
+    font-size: 14px;
+    color: #fff;
+    text-decoration: none; }
+.header {
+  padding: 12px 0;
+  background: #252525; }
+  .header__container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+
+.logo__link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none; }
+
+.logo__image {
+  margin-right: 10px; }
+.footer {
+  padding: 12px 0;
+  background: #252525; }
+  .footer__container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+.title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-bottom: 30px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #5a5a5a; }
+  .title__text {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 500;
+    margin-left: 15px; }
+  .title--dark .title__text {
+    color: #3b3b3b; }
+.current-streams {
+  background-image: url("../current-stream-bg.jpg");
+  background-size: cover; }
+  .current-streams__main {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 56.25%; }
+    .current-streams__main iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
+  .current-streams__other {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 30px; }
+    .current-streams__other-link {
+      margin-right: 90px; }
+      .current-streams__other-link:last-child {
+        margin-right: 0; }
+
+.preloader {
+  color: #fff;
+  font-size: 24px; }
+.department {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  text-decoration: none; }
+  .department__image {
+    position: relative; }
+    .department__image > img {
+      display: block; }
+  .department__color {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    opacity: 0; }
+  .department__title {
+    margin-left: 10px; }
+  .department:hover .department__color {
+    opacity: 0.6; }
+  .department__title {
+    margin-top: 15px;
+    color: #3b3b3b;
+    font-size: 18px;
+    font-weight: 500; }
+.departments__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.departments .slider-list {
+  height: 500px !important; }
+
+.departments .slider-decorator-2 {
+  display: none; }
+.teacher {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  margin-bottom: 20px; }
+  .teacher__photo {
+    display: block; }
+  .teacher__info {
+    position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    opacity: 0; }
+  .teacher__name {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500; }
+  .teacher:hover .teacher__info {
+    opacity: 1; }
+.department-page__teachers {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+.video {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  text-decoration: none; }
+  .video img {
+    display: block; }
+  .video__title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: #fff;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.8);
+    font-size: 14px; }
+
+.decorator {
+  border: 0;
+  background: none;
+  font-size: 40px;
+  cursor: pointer;
+  outline: none; }
+  .decorator.hidden {
+    opacity: 0.5;
+    cursor: default; }
+
+.videos .slider-list {
+  height: 180px !important; }
+.subscribe {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+  .subscribe__input {
+    width: 100%;
+    padding: 30px 50px;
+    outline: none;
+    font-size: 24px;
+    font-weight: bold; }
+  .subscribe__button {
+    background: #252525;
+    color: #fff;
+    font-size: 20px;
+    padding: 0 20px;
+    cursor: pointer;
+    border: none; }
+    .subscribe__button:hover {
+      background: #3f3f3f; }
+.teacher-page__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.teacher-page__photo {
+  margin-right: 30px; }
+
+.stream {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 56.25%; }
+  .stream iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+.video-page__container {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 56.25%; }
+  .video-page__container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+.page p {
+  margin-bottom: 20px; }
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  transition: all 0.4s; }
+
+body {
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 16px; }
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 30px;
+  margin: 0 auto; }
+
+section {
+  padding: 60px 0; }
