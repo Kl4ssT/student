@@ -10,7 +10,7 @@ import body from 'koa-body';
 
 export default () => {
     const middlewares = [];
-    //middlewares.push(convert(cors()));
+    middlewares.push(convert(cors()));
     middlewares.push(convert(body({ multipart: true })));
     middlewares.push(convert(serve('assets')));
 

@@ -84,38 +84,32 @@ Teachers.del('/:id', authMiddleware, async (ctx) => {
     }
 });
 
-Teachers.post('/teachers/edit', authMiddleware, async (ctx) => {
-    try
+Teachers.put('/:id', authMiddleware, async (ctx) => {
+
+    console.log(ctx.request.body);
+
+    const { id, name, description, id_category, channel_id, stream_id } = ctx.request.body.fields;
+
+    if (!id || !name || !description || !id_category || !channel_id || !stream_id) ctx.throw(400, { message: 'Invalid data' });
+
+    const editableTeacher = await models.teachers.findById(id);
+
+    if (!editableTeacher) ctx.throw(400, { message: 'Teacher not found' });
+
+    let photo_name = (ctx.request.body.files.photo) ? uniqid() : editableTeacher.photo;
+
+    if (ctx.request.body.files.photo)
     {
-        const data = ctx.request.body;
-
-        /*const fileName = uniqid();
-
-        const file = data.files.file;
-        const filePath = path.join(__dirname, '..', '..', 'assets', fileName);
+        photo_name += ctx.request.body.files.photo.name;
+        const file = ctx.request.body.files.photo;
+        const filePath = path.join(__dirname, '..', '..', 'assets', photo_name);
         const reader = fs.createReadStream(file.path);
         const writer = fs.createWriteStream(filePath);
         reader.pipe(writer);
-
-        const { name, description, channel, stream, department } = data.fields;*/
-
-        /*const editableTeacher = await models.teachers.findById(data.id);
-
-        editableTeacher.name = data.name;
-        editableTeacher.description = data.description;
-        editableTeacher.channel_id = data.channel_id;
-        editableTeacher.stream_id = data.stream_id;
-        editableTeacher.id_category = data.id_category;
-
-        await editableTeacher.save();
-
-        ctx.body = editableTeacher;*/
-        ctx.body = '111';
     }
-    catch (err)
-    {
-        console.log(err);
-    }
+
+    const editedTeacher = await editableTeacher.update({ name: name, description: description, id_category: id_category, channel_id: channel_id, stream_id: stream_id, photo: photo_name });
+    ctx.body = editedTeacher;
 });
 
 Teachers.get('/department/:id', async (ctx) => {

@@ -91,4 +91,50 @@ Departments.del('/:id', authMiddleware, async (ctx) => {
     }
 });
 
+Departments.put('/:id', authMiddleware, async (ctx) => {
+
+    state = {
+        id: null,
+        title: null,
+        photo: null,
+        icon: null,
+        color: null
+    };
+
+    const { id, title, color } = ctx.request.body.fields;
+
+    if (!id || !title || !color) ctx.throw(400, { message: 'Invalid data' });
+
+    const editableDepartment = await models.departments.findById(id);
+
+    if (!editableDepartment) ctx.throw(400, { message: 'Department not found' });
+
+    let photo_name = (ctx.request.body.files.photo) ? uniqid() : editableDepartment.photo;
+
+    if (ctx.request.body.files.photo)
+    {
+        photo_name += ctx.request.body.files.photo.name;
+        const file = ctx.request.body.files.photo;
+        const filePath = path.join(__dirname, '..', '..', 'assets', photo_name);
+        const reader = fs.createReadStream(file.path);
+        const writer = fs.createWriteStream(filePath);
+        reader.pipe(writer);
+    }
+
+    let icon_name = (ctx.request.body.files.icon) ? uniqid() : editableDepartment.icon;
+
+    if (ctx.request.body.files.icon)
+    {
+        icon_name += ctx.request.body.files.icon.name;
+        const file = ctx.request.body.files.icon;
+        const filePath = path.join(__dirname, '..', '..', 'assets', icon_name);
+        const reader = fs.createReadStream(file.path);
+        const writer = fs.createWriteStream(filePath);
+        reader.pipe(writer);
+    }
+
+    const editedDepartment = await editableDepartment.update({ title: title, color: color, photo: photo_name, icon: icon_name });
+    ctx.body = editedDepartment;
+});
+
 export default Departments;
